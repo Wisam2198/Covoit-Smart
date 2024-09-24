@@ -2,12 +2,12 @@
 <html lang="fr">
 
 <?php
-// Démarrer la session
+// DÃ©marrer la session
 session_start();
 
-// Vérifier si l'utilisateur est connecté
+// VÃ©rifier si l'utilisateur est connectÃ©
 if (isset($_SESSION['login'])) {
-    // Détruire toutes les variables de session
+    // DÃ©truire toutes les variables de session
     $_SESSION = array();
 
     // Si la session utilise des cookies, les supprimer aussi
@@ -19,15 +19,15 @@ if (isset($_SESSION['login'])) {
         );
     }
 
-    // Détruire la session
+    // DÃ©truire la session
     session_destroy();
 
     // Rediriger l'utilisateur vers la page de connexion (ou accueil)
-    header("Location: connexion_covoit.php"); // Remplace par la page souhaitée
+    header("Location: connexion.php"); // Remplace par la page souhaitÃ©e
     exit;
 } else {
-    // Si l'utilisateur n'est pas connecté, le rediriger directement
-    header("Location: connexion_covoit.php"); // Redirection si l'utilisateur n'est pas connecté
+    // Si l'utilisateur n'est pas connectÃ©, le rediriger directement
+    header("Location: connexion.php"); // Redirection si l'utilisateur n'est pas connectÃ©
     exit;
 }
 ?>
