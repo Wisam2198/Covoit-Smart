@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = 'Les mots de passe ne correspondent pas.';
     } else {
         // Vérifier si l'utilisateur existe déjà
-        $stmt = $bdd->prepare("SELECT * FROM usr WHERE login = :login");
+        $stmt = $bdd->prepare("SELECT * FROM user WHERE login = :login");
         $stmt->bindParam(':login', $login);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
             // Insérer les données dans la base de données
-            $stmt = $bdd->prepare("INSERT INTO usr (login, password) VALUES (:login, :password)");
+            $stmt = $bdd->prepare("INSERT INTO user (login, password) VALUES (:login, :password)");
             $stmt->bindParam(':login', $login);
             $stmt->bindParam(':password', $hashed_password);
             $stmt->execute();
