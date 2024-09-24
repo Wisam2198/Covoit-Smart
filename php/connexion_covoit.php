@@ -1,29 +1,30 @@
 <?php
 session_start();
 
-// Connexion à la base de données
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_covoit;charset=utf8;', 'web', '4hxVH5dQ,#RRym;');
+// Connexion Ã  la base de donnÃ©es
+$bdd = new PDO('mysql:host=localhost;dbname=covoit_smart;charset=utf8;', 'covoit', 'rootcovoit');
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ini_set('display_errors', 1);
 
-// Vérification du formulaire
+// VÃ©rification du formulaire
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
     $password = $_POST['password'];
 
-    // Vérifier si les champs sont vides
+    // VÃ©rifier si les champs sont vides
     if (empty($login) || empty($password)) {
         $message = 'Tous les champs sont requis.';
     } else {
-        // Rechercher l'utilisateur dans la base de données
-        $stmt = $bdd->prepare("SELECT * FROM usr WHERE login = :login");
+        // Rechercher l'utilisateur dans la base de donnÃ©es
+        $stmt = $bdd->prepare("SELECT * FROM user WHERE login = :login");
         $stmt->bindParam(':login', $login);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Vérification du mot de passe
+        // VÃ©rification du mot de passe
         if ($user && password_verify($password, $user['password'])) {
-            // Connexion réussie, redirection vers une autre page
+            // Connexion rÃ©ussie, dÃ©finition de la session
+            $_SESSION['login'] = $login; // Assurez-vous que cela est dÃ©fini
             header("Location: dashboard.php");
             exit();
         } else {
