@@ -1,43 +1,43 @@
 <?php
 session_start();
 
-// Connexion à la base de données
+// Connexion Ã  la base de donnÃ©es
 $bdd = new PDO('mysql:host=localhost;dbname=covoit_smart;charset=utf8;', 'covoit', 'rootcovoit');
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ini_set('display_errors', 1);
 
-// Vérification du formulaire
+// VÃ©rification du formulaire
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    // Vérifier si les champs sont vides
+    // VÃ©rifier si les champs sont vides
     if (empty($login) || empty($password) || empty($confirm_password)) {
         $message = 'Tous les champs sont requis.';
     } elseif ($password !== $confirm_password) {
         $message = 'Les mots de passe ne correspondent pas.';
     } else {
-        // Vérifier si l'utilisateur existe déjà
+        // VÃ©rifier si l'utilisateur existe dÃ©jÃ 
         $stmt = $bdd->prepare("SELECT * FROM user WHERE login = :login");
         $stmt->bindParam(':login', $login);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user) {
-            $message = 'Identifiant déjà pris.';
+            $message = 'Identifiant dÃ©jÃ  pris.';
         } else {
             // Hachage du mot de passe
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            // Insérer les données dans la base de données
+            // InsÃ©rer les donnÃ©es dans la base de donnÃ©es
             $stmt = $bdd->prepare("INSERT INTO user (login, password) VALUES (:login, :password)");
             $stmt->bindParam(':login', $login);
             $stmt->bindParam(':password', $hashed_password);
             $stmt->execute();
 
             // Rediriger vers la page de connexion
-            header("Location: connexion_covoit.php");
+            header("Location: acceuil_page.html");//Soumis Ã  changements
             exit();
         }
     }
@@ -115,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
           </div>
           <div class="footer-link padding-top--24">
-            <span>Tu as déjà un compte ? <a href="connexion_covoit.php">Connecte-toi !</a></span>
+            <span>Tu as dÃ©jÃ  un compte ? <a href="connexion.php">Connecte-toi !</a></span>
           </div>
         </div>
       </div>
