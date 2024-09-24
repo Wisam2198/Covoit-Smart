@@ -1,0 +1,29 @@
+BASE :
+        connexion_covoit
+TABLE :
+        user
+            COLONNES :
+                ID
+                password
+                login
+
+BASE :
+        gestion_utilisateurs
+TABLE:
+        emploi_du_temps
+            COLONNES :
+                id 
+                jour
+                heure_debut
+                heure_fin
+        user_data
+            COLONNES :
+                id 
+                photo
+                carburant
+                places
+                ville
+                tel 
+                nom
+                prenom
+                ecole
