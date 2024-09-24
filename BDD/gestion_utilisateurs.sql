@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 24 sep. 2024 à 09:01
+-- Généré le : mar. 24 sep. 2024 à 09:24
 -- Version du serveur : 10.11.8-MariaDB-0ubuntu0.24.04.1
 -- Version de PHP : 8.3.6
 
@@ -24,19 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `emploi_du_temps`
---
-
-CREATE TABLE `emploi_du_temps` (
-  `id` int(11) NOT NULL,
-  `jour` varchar(20) DEFAULT NULL,
-  `heure_debut` time DEFAULT NULL,
-  `heure_fin` time DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `user_data`
 --
 
@@ -49,18 +36,13 @@ CREATE TABLE `user_data` (
   `tel` varchar(12) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
-  `ecole` varchar(100) NOT NULL
+  `ecole` varchar(100) NOT NULL,
+  `mail` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Index pour les tables déchargées
 --
-
---
--- Index pour la table `emploi_du_temps`
---
-ALTER TABLE `emploi_du_temps`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `user_data`
@@ -71,12 +53,6 @@ ALTER TABLE `user_data`
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
-
---
--- AUTO_INCREMENT pour la table `emploi_du_temps`
---
-ALTER TABLE `emploi_du_temps`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `user_data`
