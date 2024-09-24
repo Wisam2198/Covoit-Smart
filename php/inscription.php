@@ -2,7 +2,7 @@
 session_start();
 
 // Connexion à la base de données
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_covoit;charset=utf8;', 'web', '4hxVH5dQ,#RRym;');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_covoit;charset=utf8;', 'covoit', 'rootcovoit');
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ini_set('display_errors', 1);
 
