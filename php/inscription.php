@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute();
 
             // Rediriger vers la page de connexion
-            header("Location: connexion_covoit.php");
+            header("Location: connexion.php");
             exit();
         }
     }
