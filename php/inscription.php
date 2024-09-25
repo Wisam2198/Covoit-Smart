@@ -115,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
           </div>
           <div class="footer-link padding-top--24">
-            <span>Tu as déjà un compte ? <a href="connexion_covoit.php">Connecte-toi !</a></span>
+            <span>Tu as déjà un compte ? <a href="connexion.php">Connecte-toi !</a></span>
           </div>
         </div>
       </div>
