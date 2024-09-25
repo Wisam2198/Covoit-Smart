@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user && password_verify($password, $user['password'])) {
             // Connexion rÃ©ussie, dÃ©finition de la session
             $_SESSION['login'] = $login; // Assurez-vous que cela est dÃ©fini
-            header("Location: dashboard.php");
+            header("Location: ../html/accueil.html");
             exit();
         } else {
             $message = 'Identifiant ou mot de passe incorrect.';
